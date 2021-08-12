@@ -14,7 +14,7 @@ export const getNextTransitions: (p: GetNextTransitionsParams) => Promise<Servic
 
   switch (p.nextStep) {
     case StepType.Blue:
-      if (p.historicalSteps.length > 1 && p.historicalSteps[p.historicalSteps.length - 2] === StepType.Yellow) {
+      if (p.historicalSteps.length > 0 && p.historicalSteps[p.historicalSteps.length - 1] === StepType.Yellow) {
         data = [StepType.Green];
       }
       else {

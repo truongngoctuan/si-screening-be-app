@@ -1,0 +1,1 @@
+newman run postman\\SiScreeningBEService.postman_collection.json -e postman\\SiScreening_Local.postman_environment.json --reporters cli --timeout-request 30000 --ignore-redirects

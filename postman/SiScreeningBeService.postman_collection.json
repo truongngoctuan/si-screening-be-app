@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "778785c2-2ca3-425e-99dd-9fcd7e2048cc",
+		"name": "SiScreeningBeService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Yellow Transition init",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"return green and yellow for blue state\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"    pm.expect(jsonData[0]).to.eql(\"green\");\r",
+							"    pm.expect(jsonData[1]).to.eql(\"yellow\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BEGateway}}/api/transition/blue",
+					"host": [
+						"{{BEGateway}}"
+					],
+					"path": [
+						"api",
+						"transition",
+						"blue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "No consecutive yellow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"return green and yellow for blue state\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"    pm.expect(jsonData[0]).to.eql(\"green\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BEGateway}}/api/transition/blue?histories=yellow",
+					"host": [
+						"{{BEGateway}}"
+					],
+					"path": [
+						"api",
+						"transition",
+						"blue"
+					],
+					"query": [
+						{
+							"key": "histories",
+							"value": "yellow"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
